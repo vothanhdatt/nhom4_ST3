@@ -19,4 +19,7 @@ class AhihiController extends Controller
     public function index1($id="welcome"){
             return view($id);     
     }
+    public function admin(){
+        return 'Chào Mày!!!';
+    }
 }
