@@ -22,4 +22,8 @@ class AhihiController extends Controller
     public function admin(){
         return 'Chào Mày!!!';
     }
+    public function login(Request $request){
+        return "Chao " . $request->name;
+    }
+    
 }

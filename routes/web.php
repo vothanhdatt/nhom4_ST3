@@ -20,5 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/{id}','AhihiController@index1');
 
+
+Route::get('/welcome','AhihiController@login')->middleware('login');
+Route::get('/admin','AhihiController@admin')->middleware('checkage');
 Route::get('/{id?}','AhihiController@index1');
-Route::get('/admin/{age}','AhihiController@admin')->middleware('checkage');

@@ -98,9 +98,13 @@
             </div>
             <br>
             <br>
-            <form action="{{ url('/admin') }}" method="get">
-                Nhập vào tuổi:
-                <input type="number" name="age" id="">
+            <form action="{{ url('/welcome') }}" method="get" >
+                Account:
+                <input type="text" name="account" id="">
+                <br>
+                Password:
+                <input type="password" name="password" id="">
+                <br>
                 <input type="submit" value="submit">
             </form>
             <div class="container">
