@@ -15,3 +15,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/','PagesController@post');
 Route::get('/{id?}','PagesController@index');
 Route::get('/{id?}','PagesController@cmt');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
