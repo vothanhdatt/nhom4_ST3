@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePostTable extends Migration
      */
     public function up()
     {
-        Schema::create('post', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id('id_post');
-            $table->text('id_user');
-            $table->text('title');
-            $table->integer('like');
-            $table->text('id_comment');
-            $table->text('image');
+            $table->integer('id_user');
+            $table->integer('id_comment');
+            $table->text('content');
+            $table->text('images');
+            $table->text('like');
+            $table->text('permission');
             $table->timestamp('created_post');
         });
     }
@@ -31,6 +32,6 @@ class CreatePostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 }

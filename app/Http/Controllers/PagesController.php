@@ -8,7 +8,7 @@ use App\Comment;
 
 class PagesController extends Controller
 {
-    
+   
 public function cmt($id="pages.home"){
     $cmt = Comment::all();
     $post = post::all();

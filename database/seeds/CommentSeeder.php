@@ -13,9 +13,20 @@ class CommentSeeder extends Seeder
     {
         //
         DB::table('comments')->insert([
-            'id_cmt' => 'cmt1',
             'id_user' => 'Dattttt',
             'content' => 'Test cái cmt',
+        ]);
+        DB::table('comments')->insert([
+            'id_user' => 'Dattttt',
+            'content' => 'Test cái cmt1',
+        ]);
+        DB::table('comments')->insert([
+            'id_user' => 'Dattttt',
+            'content' => 'Test cái cmt2',
+        ]);
+        DB::table('comments')->insert([
+            'id_user' => 'Dattttt',
+            'content' => 'Test cái cmt3',
         ]);
     }
 }
