@@ -51,6 +51,24 @@ Start Date:  8/August/19
 /*===============
 ***General Styling 
 ===============*/
+.guest-header {
+    padding-top: 20px;
+    margin-right: 40px;
+}
+
+.guest-header .link {
+    background: #23d2e2 none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 10px;
+    transition: all 0.2s linear 0s;
+}
+.guest-header .link:hover{
+    background: #fa6342;
+}
+
 html,body{
 	font-family: "Roboto", "Segoe Ui";
 }
@@ -775,6 +793,8 @@ header.sticky {
 }
 
 .top-area .user-img > img {
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: inline-block;
     transform: scale(0.8);
@@ -4785,6 +4805,7 @@ canvas {
 .your-page > figure img,
 .notification-box > ul li figure img {
     border-radius: 100%;
+    width: 40px;
 }
 
 
@@ -7035,6 +7056,7 @@ a.addnewforum {
     max-width: 155px;
     min-width: 155px;
     width: 155px;
+    height: 155px;
     display: inline-block;
 }
 

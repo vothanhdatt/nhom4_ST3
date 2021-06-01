@@ -1,7 +1,10 @@
 @extends('layouts.user')
-
 @section('content')
-
+@guest
+{{ __('Chua dang nhap') }}
+@else
+{{ __('Da dang nhap') }}
+@endguest
 <div class="theme-layout">
     <div class="postoverlay"></div>
 
@@ -476,83 +479,92 @@
                                 @guest
                                 @else
                                 <div class="central-meta postbox">
-                                    <span class="create-post">Create post</span>
-                                    <div class="new-postbox">
-                                        <figure>
-                                            <img src="images/resources/<?php echo(Auth::user()->avatar) ?>" alt="">
-                                        </figure>
-                                        <div class="newpst-input">
-                                            <form method="post">
-                                                <textarea rows="2"
-                                                    placeholder="Share some what you are thinking?"></textarea>
-                                            </form>
-                                        </div>
-                                        <div class="attachments">
-                                            <ul>
-                                                <li>
-                                                    <span class="add-loc">
-                                                        <i class="fa fa-map-marker"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-music"></i>
-                                                    <label class="fileContainer">
-                                                        <input type="file">
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-image"></i>
-                                                    <label class="fileContainer">
-                                                        <input type="file">
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-video-camera"></i>
-                                                    <label class="fileContainer">
-                                                        <input type="file">
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-camera"></i>
-                                                    <label class="fileContainer">
-                                                        <input type="file">
-                                                    </label>
-                                                </li>
-                                                <li class="preview-btn">
-                                                    <button class="post-btn-preview" type="submit"
-                                                        data-ripple="">Preview</button>
-                                                </li>
-                                            </ul>
-                                            <button class="post-btn" type="submit" data-ripple="">Post</button>
-
-                                        </div>
-                                        <div class="add-location-post">
-                                            <span>Drag map point to selected area</span>
-                                            <div class="row">
-
-                                                <div class="col-lg-6">
-                                                    <label class="control-label">Lat :</label>
-                                                    <input type="text" class="" id="us3-lat" />
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <label>Long :</label>
-                                                    <input type="text" class="" id="us3-lon" />
-                                                </div>
+                                    <form action="{{route('add-post')}}" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <span class="create-post">Create post</span>
+                                        <div class="new-postbox">
+                                            <figure>
+                                                <img src="images/resources/<?php echo(Auth::user()->avatar) ?>" alt="">
+                                            </figure>
+                                            <div class="newpst-input">
+                                                <form method="post">
+                                                    <textarea rows="2" placeholder="Share some what you are thinking?"
+                                                        name="text"> </textarea>
+                                                </form>
                                             </div>
-                                            <!-- map -->
-                                            <div id="us3"></div>
+                                            <div class="attachments">
+                                                <ul>
+                                                    <li>
+                                                        <span class="add-loc">
+                                                            <i class="fa fa-map-marker"></i>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-music"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+
+
+                                                        <div class="controls">
+                                                            <i class="fa fa-image"></i>
+                                                            <label class="fileContainer">
+                                                                <input type="file" name="fileUpload" id="fileUpload">
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-video-camera"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-camera"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li class="preview-btn">
+                                                        <button class="post-btn-preview" type="submit"
+                                                            data-ripple="">Preview</button>
+                                                    </li>
+                                                </ul>
+                                                <button class="post-btn" type="submit" data-ripple="">Post</button>
+
+                                            </div>
+                                            <div class="add-location-post">
+                                                <span>Drag map point to selected area</span>
+                                                <div class="row">
+
+                                                    <div class="col-lg-6">
+                                                        <label class="control-label">Lat :</label>
+                                                        <input type="text" class="" id="us3-lat" />
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>Long :</label>
+                                                        <input type="text" class="" id="us3-lon" />
+                                                    </div>
+                                                </div>
+                                                <!-- map -->
+                                                <div id="us3"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div><!-- add post new box -->
                                 @endguest
 
-
                                 <div class="loadMore">
+                                    @foreach($post as $value)
+
                                     <div class="central-meta item">
                                         <div class="user-post">
                                             <div class="friend-info">
                                                 <figure>
-                                                    <img src="images/resources/nearly1.jpg" alt="">
+                                                    <img src="images/resources/<?php echo($value->user->avatar) ?>"
+                                                        alt="">
                                                 </figure>
                                                 <div class="friend-name">
                                                     <div class="more">
@@ -573,26 +585,37 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <ins><a href="time-line.html" title="">Jack Carter</a> Post
+                                                    <ins><a href="time-line.html" title="">{{$value->user->name}}</a>
+                                                        Post
                                                         Album</ins>
-                                                    <span><i class="fa fa-globe"></i> published: September,15 2020
+                                                    <span><i class="fa fa-globe"></i> published:
+                                                        {{$value['created_at']}}
                                                         19:PM </span>
                                                 </div>
                                                 <div class="post-meta">
                                                     <p>
-                                                        Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
-                                                        condimentum rhoncus, sem quam semper libero.
+                                                        {{$value['content']}}
                                                     </p>
                                                     <figure>
                                                         <div class="img-bunch">
                                                             <div class="row">
+                                                                <figure>
+                                                                    <a class="strip"
+                                                                        href="images/resources/<?php echo($value['images']) ?>"
+                                                                        title="" data-strip-group="mygroup"
+                                                                        data-strip-group-options="loop: false">
+                                                                        <img src="images/resources/<?php echo($value['images']) ?>"
+                                                                            alt="">
+                                                                    </a>
+                                                                </figure>
+                                                                <!--
                                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                                     <figure>
                                                                         <a class="strip"
-                                                                            href="images/resources/album1.jpg" title=""
+                                                                            href="images/resources/avatar.jpg" title=""
                                                                             data-strip-group="mygroup"
                                                                             data-strip-group-options="loop: false">
-                                                                            <img src="images/resources/album1.jpg"
+                                                                            <img src="images/resources/avatar.jpg"
                                                                                 alt="">
                                                                         </a>
                                                                     </figure>
@@ -637,7 +660,7 @@
                                                                             <span>+15</span>
                                                                         </div>
                                                                     </figure>
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <ul class="like-dislike">
@@ -660,13 +683,29 @@
                                                             </li>
                                                             <li>
                                                                 <div class="likes heart" title="Like/Dislike">❤
-                                                                    <span>2K</span>
+                                                                    <span> 
+                                                                        <?php
+                                                                            $countlike = 0;
+                                                                            foreach($value->like as $valuelike){
+                                                                                $countlike++;
+                                                                            }
+                                                                            echo($countlike);
+                                                                        ?>
+                                                                    </span>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <span class="comment" title="Comments">
                                                                     <i class="fa fa-commenting"></i>
-                                                                    <ins>52</ins>
+                                                                    <ins>
+                                                                    <?php
+                                                                            $countcmt = 0;
+                                                                            foreach($value->comment as $valuecmt){
+                                                                                $countcmt++;
+                                                                            }
+                                                                            echo($countcmt);
+                                                                        ?>
+                                                                    </ins>
                                                                 </span>
                                                             </li>
 
@@ -702,18 +741,20 @@
                                                 </div>
                                                 <div class="coment-area" style="display: block;">
                                                     <ul class="we-comet">
+                                                        @foreach($value->comment as $valuecmt)
+
                                                         <li>
                                                             <div class="comet-avatar">
-                                                                <img src="images/resources/nearly3.jpg" alt="">
+                                                                <img src="images/resources/<?php echo($valuecmt->user->avatar) ?>"
+                                                                    alt="">
                                                             </div>
                                                             <div class="we-comment">
-                                                                <h5><a href="time-line.html" title="">Jason
-                                                                        borne</a></h5>
-                                                                <p>we are working for the dance and sing songs. this
-                                                                    video is very awesome for the youngster. please
-                                                                    vote this video and like our channel</p>
+                                                                <h5><a href="time-line.html"
+                                                                        title="">{{$valuecmt->user->name}}
+                                                                    </a></h5>
+                                                                <p>{{$valuecmt->content}}</p>
                                                                 <div class="inline-itms">
-                                                                    <span>1 year ago</span>
+                                                                    <span><?php echo($valuecmt->created_at) ?></span>
                                                                     <a class="we-reply" href="#" title="Reply"><i
                                                                             class="fa fa-reply"></i></a>
                                                                     <a href="#" title=""><i
@@ -722,38 +763,26 @@
                                                             </div>
 
                                                         </li>
-                                                        <li>
-                                                            <div class="comet-avatar">
-                                                                <img src="images/resources/comet-4.jpg" alt="">
-                                                            </div>
-                                                            <div class="we-comment">
-                                                                <h5><a href="time-line.html" title="">Sophia</a>
-                                                                </h5>
-                                                                <p>we are working for the dance and sing songs. this
-                                                                    video is very awesome for the youngster.
-                                                                    <i class="em em-smiley"></i>
-                                                                </p>
-                                                                <div class="inline-itms">
-                                                                    <span>1 year ago</span>
-                                                                    <a class="we-reply" href="#" title="Reply"><i
-                                                                            class="fa fa-reply"></i></a>
-                                                                    <a href="#" title=""><i
-                                                                            class="fa fa-heart"></i><span>20</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        @endforeach
+
                                                         <li>
                                                             <a href="#" title="" class="showmore underline">more
                                                                 comments+</a>
                                                         </li>
+                                                        @guest
+                                                        @else
                                                         <li class="post-comment">
                                                             <div class="comet-avatar">
-                                                                <img src="images/resources/nearly1.jpg" alt="">
+                                                                <img src="images/resources/<?php echo(Auth::user()->avatar) ?>"
+                                                                    alt="">
                                                             </div>
                                                             <div class="post-comt-box">
-                                                                <form method="post">
-                                                                    <textarea
-                                                                        placeholder="Post your comment"></textarea>
+                                                                <form action="./addcomment/<?php echo($value->id) ?>"
+                                                                    method="post" enctype="multipart/form-data">
+                                                                    <input type="hidden" name="_token"
+                                                                        value="{{csrf_token()}}">
+                                                                    <textarea placeholder="Post your comment"
+                                                                        name="text"></textarea>
                                                                     <div class="add-smiles">
                                                                         <div class="uploadimage">
                                                                             <i class="fa fa-image"></i>
@@ -779,16 +808,21 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <button type="submit"></button>
+                                                                    <button class="btn btn-md-2 btn-primary comment"
+                                                                        type="submit"></button>
                                                                 </form>
                                                             </div>
                                                         </li>
+                                                        @endguest
+
                                                     </ul>
                                                 </div>
                                             </div>
 
                                         </div>
-                                    </div><!-- album post -->
+                                    </div>
+                                    @endforeach
+                                    <!-- album post -->
                                     <div class="central-meta item">
                                         <div class="user-post">
                                             <div class="friend-info">
@@ -941,9 +975,13 @@
                                                                 <img src="images/resources/nearly1.jpg" alt="">
                                                             </div>
                                                             <div class="post-comt-box">
-                                                                <form method="post">
-                                                                    <textarea
-                                                                        placeholder="Post your comment"></textarea>
+                                                                <form action="#" method="post"
+                                                                    enctype="multipart/form-data">
+                                                                    <input type="hidden" name="_token"
+                                                                        value="{{csrf_token()}}">
+
+                                                                    <textarea placeholder="Post your comment"
+                                                                        name="text"></textarea>
                                                                     <div class="add-smiles">
                                                                         <div class="uploadimage">
                                                                             <i class="fa fa-image"></i>
@@ -969,7 +1007,8 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <button type="submit"></button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-md-2 btn-primary comment"></button>
                                                                 </form>
                                                             </div>
                                                         </li>

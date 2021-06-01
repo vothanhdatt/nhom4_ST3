@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 class CommentSeeder extends Seeder
 {
     /**
@@ -13,20 +13,28 @@ class CommentSeeder extends Seeder
     {
         //
         DB::table('comments')->insert([
-            'id_user' => 'Dattttt',
-            'content' => 'Test cái cmt',
+            'id_user' => 1,
+            'id_post' => 1,
+            'id_share' =>0,
+            'content' => 'Test cái cmt1'
         ]);
         DB::table('comments')->insert([
-            'id_user' => 'Dattttt',
-            'content' => 'Test cái cmt1',
+            'id_user' => 1,
+            'id_post' => 2,
+            'id_share' =>0,
+            'content' => 'Test cái cmt2'
         ]);
         DB::table('comments')->insert([
-            'id_user' => 'Dattttt',
-            'content' => 'Test cái cmt2',
+            'id_user' => 1,
+            'id_post' => 3,
+            'id_share' =>0,
+            'content' => 'Test cái cmt3'
         ]);
         DB::table('comments')->insert([
-            'id_user' => 'Dattttt',
-            'content' => 'Test cái cmt3',
+            'id_user' => 1,
+            'id_post' => 4,
+            'id_share' =>0,
+            'content' => 'Test cái cmt4'
         ]);
     }
 }
