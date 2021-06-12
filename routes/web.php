@@ -31,8 +31,12 @@ Route::get('/setting', function () {
 
 
 Route::post('/newsfeed',['as'=>'add-post','uses'=>'PostController@createPost']);
-Route::post('/addcomment/{id}','CommentController@createComment');
+Route::get('/deletepost/{id}','PostController@deletePost');
+Route::get('/deletecomment/{id}','CommentController@deleteComment');
 
+Route::post('/comment/{id}','CommentController@createComment');
+
+Route::post('/like/{pid}',['as'=>'like', 'uses'=>'LikeController@likePost']);
 
 Auth::routes();
 

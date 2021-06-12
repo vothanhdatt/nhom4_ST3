@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $post = Post::all();
+        $post = Post::orderBy('id','desc')->get();
         
        
         return view('user.newsfeed',['post'=>$post]);

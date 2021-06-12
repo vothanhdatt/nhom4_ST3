@@ -27,15 +27,24 @@ class PostController extends Controller
             $files = $request->file('fileUpload');
                 echo("aaaaa");
                 $name = $files->getClientOriginalName();
-                $post->images= $name;              
+                $post->images= $name;   
+                $files->move('../public/images/resources', $name);        
         }
         else{
             $post->images= "";
         }
         $post->permission = 'public';
+        
         $post->save();
 
 
         return redirect('home');
+    }
+    //
+    public function deletePost($id){
+        $post = Post::find($id);
+
+        $post->delete();
+        return redirect()->action('HomeController@index')->with('success','Dữ liệu xóa thành công.');
     }
 }

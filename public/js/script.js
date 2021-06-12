@@ -177,7 +177,26 @@ $('.share-pst').on('click', function () {
 	$('.popup-closed, .cancel').on('click', function () {
 	$('.popup-wraper2').removeClass('active');
 });	
-	
+
+
+// edit post popup	
+// const editform = document.querySelector('.edit-post-form');
+// editform.style.display = 'none';
+
+// const editPost = document.querySelector('#edit-post');
+// editPost.addEventListener('click', function () {
+//     editform.style.display = 'block';
+// 	$('.edit-post-form').addClass('active');
+// });
+// $('.edit-post-pst').on('click', function () {
+// 	$('.edit-post-form').addClass('active');
+// 	return false;
+// });
+// 	$('.popup-closed-edit-post, .cancel').on('click', function () {
+// 	$('.edit-post-form').removeClass('active');
+// });	
+
+
 // messenger call popup
 $('.audio-call, .video-call').on('click', function () {
 		$('.call-wraper').addClass('active');
@@ -202,22 +221,19 @@ $('.audio-call, .video-call').on('click', function () {
 	}
 
 //--- heart like and unlike 
-	var counter = 0;
-	var animated = false;
-		$('.heart').click(function(){
-		  if(!animated){
-			$(this).addClass('happy').removeClass('broken');
-			animated = true;
-			counter++;
-			$(this).children('span').text(counter);
-		  }
-		  else {
-			$(this).removeClass('happy').addClass('broken');
-			animated = false; 
-			 counter--;
-			$(this).children('span').text(counter);
-		  }
-		});	
+	// var animated = false;
+	// 	$('.heart').click(function(){
+	// 	  if(!animated){
+	// 		$(this).addClass('happy').removeClass('broken');
+	// 		animated = true;
+	// 		$(this).children('span').text(counter);
+	// 	  }
+	// 	  else {
+	// 		$(this).removeClass('happy').addClass('broken');
+	// 		animated = false; 
+	// 		$(this).children('span').text(counter);
+	// 	  }
+	// 	});	
 	
 // search fadein out at navlist area	
 	$('.search-data').on('click', function () {
@@ -468,7 +484,7 @@ $('#nightmode').on('change', function() {
 if ($.isFunction($.fn.loadMoreResults)) {	
 	$('.loadMore').loadMoreResults({
 		displayedItems: 3,
-		showItems: 1,
+		showItems: 3,
 		button: {
 		  'class': 'btn-load-more',
 		  'text': 'Load More'
@@ -477,7 +493,7 @@ if ($.isFunction($.fn.loadMoreResults)) {
 	
 	$('.load-more').loadMoreResults({
 		displayedItems: 8,
-		showItems: 1,
+		showItems: 3,
 		button: {
 		  'class': 'btn-load-more',
 		  'text': 'Load More'
@@ -486,7 +502,7 @@ if ($.isFunction($.fn.loadMoreResults)) {
 	
 	$('.load-more4').loadMoreResults({
 		displayedItems: 8,
-		showItems: 1,
+		showItems: 3,
 		button: {
 		  'class': 'btn-load-more',
 		  'text': 'Load More'

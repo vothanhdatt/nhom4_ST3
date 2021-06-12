@@ -1575,7 +1575,7 @@
                                         <h4 class="widget-title">Your page</h4>
                                         <div class="your-page">
                                             <figure>
-                                                <a href="#" title=""><img src="images/resources/friend-avatar9.jpg"
+                                                <a href="#" title=""><img src="images/resources/avatar.jpg"
                                                         alt=""></a>
                                             </figure>
                                             <div class="page-meta">

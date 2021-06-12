@@ -51,6 +51,9 @@ Start Date:  8/August/19
 /*===============
 ***General Styling 
 ===============*/
+
+
+
 .guest-header {
     padding-top: 20px;
     margin-right: 40px;
@@ -8223,6 +8226,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .popup-wraper6.active,
 .popup-wraper7.active,
 .stories-wraper.active{
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-wraper-edit{
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s linear 0s;
+}
+
+
+.popup-wraper-edit.active
+{
   -webkit-opacity: 1;
   -moz-opacity: 1;
   -ms-opacity: 1;
