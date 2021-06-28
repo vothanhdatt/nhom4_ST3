@@ -114,6 +114,7 @@ button:focus {
 img {
     height: auto;
     max-width: 100%;
+    width: 80px;
 }
 
 .overlap {
@@ -1126,6 +1127,7 @@ header.sticky {
 .drops-menu > li a figure img,
 .drops-menu > li > div figure img{
 	border-radius: 100%;
+    width: 35px;
 }
 .dropdowns.helps{width: 250px;}
 .mesg-meta {
@@ -4007,11 +4009,14 @@ nav.breadcrumb {
 
 .users-thumb-list > a:first-child {
     margin-left: 0;
+    
 }
 
 .users-thumb-list > a img {
     border: 2px solid #fff;
     border-radius: 50%;
+    width: 30px;
+    height: 30px;
 }
 
 .page-likes .tab-content .tab-pane > a {
@@ -7519,6 +7524,7 @@ input[type="checkbox"]:checked + label{color: #000;}
 .change-photo > figure img {
     border: 3px solid #ccc;
     border-radius: 100%;
+    width: 100px;
 }
 .edit-img {
     display: inline-block;
@@ -7825,6 +7831,7 @@ input[type="checkbox"]:checked + label{color: #000;}
     position: relative;
     vertical-align: middle;
     z-index: 2;
+    width: 80px;
 }
 .frnd-name {
     display: inline-block;

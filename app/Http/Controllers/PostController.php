@@ -21,30 +21,48 @@ class PostController extends Controller
         }
         
         $post->id_user = $user_id; 
-
+        
         if($request->hasFile('fileUpload')){
             
             $files = $request->file('fileUpload');
-                echo("aaaaa");
                 $name = $files->getClientOriginalName();
                 $post->images= $name;   
                 $files->move('../public/images/resources', $name);        
         }
         else{
-            $post->images= "";
+            if($request->camera_img != ""){
+                $post->images= $request->camera_img;   
+            }
+            else{
+                $post->images= "";
+            }
+            
         }
-        $post->permission = 'public';
+        $post->permission = $request->input('permission');
         
         $post->save();
 
 
-        return redirect('home');
+        return back();
     }
     //
     public function deletePost($id){
         $post = Post::find($id);
 
         $post->delete();
-        return redirect()->action('HomeController@index')->with('success','Dữ liệu xóa thành công.');
+        return back()->with('success','Dữ liệu xóa thành công.');
+    }
+    //
+    public function editPost(Request $request, $id){
+       $newPost = Post::find($id);
+       $newPost->content = $request['content'];
+       if($request['images'] != null){
+        $newPost->images = $request['images'];
+       }
+       else{
+        $newPost->images = "";
+       }
+       $newPost->permission = $request['permission'];
+       $newPost->save();
     }
 }

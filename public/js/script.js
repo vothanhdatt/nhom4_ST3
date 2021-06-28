@@ -1,3 +1,6 @@
+var postId = 0;
+
+var token = $('meta[name="csrf-token"]').attr('content');
 // Page Loader : hide loader when all are loaded
 $(window).load(function(){
 	"use strict";
@@ -37,11 +40,13 @@ jQuery(document).ready(function($) {
 	
 // New submit post box
 	$(".new-postbox").click(function () {
+		
 	    $(".postoverlay").fadeIn(500);
 	});
-	$(".postoverlay").not(".new-postbox").click(function() {
-	    $(".postoverlay").fadeOut(500);
-	});
+	// $(".postoverlay").not(".new-postbox").click(function() {
+	//     $(".postoverlay").fadeOut(500);
+	// 	alert('a');
+	// });
 	$("[type = submit]").click(function () {
 	    var post = $("textarea").val();
 	    $("<p class='post'>" + post + "</p>").appendTo("section");
@@ -152,10 +157,7 @@ jQuery(document).ready(function($) {
 		$('.popup-wraper3').addClass('active');
 		return false;
 	});
-	$('.popup-closed, .cancel').on('click', function () {
-		$('.popup-wraper3').removeClass('active');
-		return false;
-	});		
+	
 	
 // comments popup
 	jQuery(window).on("load", function(){
@@ -1148,17 +1150,7 @@ if ($.isFunction($.fn.mmenu)) {
 			time: 1000
 		});
 		}	
-/** Post a Comment **/
-jQuery(".post-comt-box textarea").on("keydown", function(event) {
 
-	if (event.keyCode == 13) {
-		var comment = jQuery(this).val();
-		var parent = jQuery(".showmore").parent("li");
-		var comment_HTML = '<li><div class="comet-avatar"><img alt="" src="images/resources/comet-2.jpg"></div><div class="we-comment"><h5><a title="" href="time-line.html">Sophia</a></h5><p>'+comment+'</p><div class="inline-itms"><span>1 minut ago</span><a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a><a title="" href="#"><i class="fa fa-heart"></i></a></div></div></li>';
-		$(comment_HTML).insertBefore(parent);
-		jQuery(this).val('');
-	}
-}); 
 	
 //inbox page 	
 //***** Message Star *****//  

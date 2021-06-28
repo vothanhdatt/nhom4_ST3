@@ -9,6 +9,7 @@ use App\Post;
 use App\Like;
 use App\User;
 use Carbon\Carbon;
+use App\Profile;
 class CommentController extends Controller
 {
 
@@ -16,8 +17,6 @@ class CommentController extends Controller
     //
     public function createComment(Request $request, $id)
     {
-    	
-        
         $userid = Auth::id();
    		$comment = new Comment;
         $comment->content = $request['content'];
@@ -32,22 +31,27 @@ class CommentController extends Controller
         $result = $date_comment->diffForHumans($now);
 
         $user = Auth::user();
-        $avatar = $user->avatar;
+        $avatar = $user->profile->avatar;
         $name = $user->name;
 
         $numb = Post::find($id)->comment->count();
 
-        //$data =['content'=>$comment->content,'avatar'=>$avatar,'time'=>$result,'name'=>$name, 'numb'=>$numb];
-        $data =['content'=>$comment->content,'avatar'=>$avatar,'time'=>$result,'name'=>$name, 'numb'=>$numb];
-        return response()->json($data);
-        //return back();
-        
+        $tempt = Comment::orderBy('id','desc')->get();
+        $id_cmt = $tempt[0]->id;
+        $data =['userid'=>$userid, 'content'=>$comment->content,'avatar'=>$avatar,'time'=>$result,'name'=>$name, 'numb'=>$numb, 'id_cmt'=>$id_cmt];
+        return response()->json($data);        
     }
     //
     public function deleteComment($id){
-        $comment = Comment::find($id);
+        $commentdelete = Comment::find($id);
 
-        $comment->delete();
-        return redirect()->action('HomeController@index')->with('success','Dữ liệu xóa thành công.');
+        $commentdelete->delete();
+
+    }
+    //
+    public function editComment(Request $request, $id){
+        $commentedit = Comment::find($id);
+        $commentedit->content = $request['content'];
+        $commentedit->save();
     }
 }

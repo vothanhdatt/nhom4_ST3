@@ -11,8 +11,6 @@ class LikeController extends Controller
 {
     //
     public function likePost($pid){
-
-    		
         $user_id = Auth::id();
         $index = 0;
         $likes = Like::where('id_post', $pid)->get();
@@ -24,7 +22,6 @@ class LikeController extends Controller
                 break; 
             }
         }
-
         if($index == 0){
             $like = new Like;
             $like->id_post = $pid;
@@ -33,7 +30,6 @@ class LikeController extends Controller
             $like->save();
             //$avatar = Auth::user()->profile->avatar_path;
         }
-
         $numb = Post::find($pid)->like->count();
         $data =['numb'=>$numb, 'index'=>$index, 'avatar'=>$avatar, 'uid'=>$user_id];
 
